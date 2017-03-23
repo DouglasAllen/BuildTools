@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Description>Copies NuGet packages form a given source folder into a specific set of folders based on a CSV file.</Description>
     <VersionPrefix>1.0.1</VersionPrefix>
-    <TargetFrameworks>netcoreapp1.0;net451</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0;net452</TargetFrameworks>
     <DebugType>portable</DebugType>
     <OutputType>exe</OutputType>
   </PropertyGroup>
@@ -21,8 +21,8 @@
     <PackageReference Include="NuGet.Client" Version="$(NuGetPackagesVersion)" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.0' ">
-    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.1.1-*" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="$(CoreFxVersion)" />
   </ItemGroup>
 
    <!-- packaging settings -->

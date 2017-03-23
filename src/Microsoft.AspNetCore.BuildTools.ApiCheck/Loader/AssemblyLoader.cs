@@ -5,7 +5,8 @@
 using System.IO;
 #endif
 using System.Reflection;
-#if NETCOREAPP1_1
+#if NETCOREAPP2_0
+using NuGet.Frameworks;
 using NuGet.ProjectModel;
 using NugetReferenceResolver;
 #endif
@@ -19,7 +20,7 @@ namespace ApiCheck
                 string assetsJson,
                 string framework)
         {
-#if NETCOREAPP1_1
+#if NETCOREAPP2_0
             var lockFile = new LockFileFormat().Read(assetsJson);
             var graph = PackageGraph.Create(lockFile, framework);
             var loader = new CoreClrAssemblyLoader(graph, assemblyPath);

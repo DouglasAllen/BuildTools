@@ -8,7 +8,7 @@
       The netstandard1.0 TFM doesn't actually compile. It's just there so Internal.AspNetCore.Sdk can take a dependency
       on this project.
     -->
-    <TargetFrameworks>netcoreapp1.1;net452;netstandard1.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0;net452;netstandard1.0</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard1.0' ">
@@ -20,6 +20,9 @@
 
   <PropertyGroup Condition=" '$(TargetFramework)' != 'netstandard1.0' ">
     <OutputType>exe</OutputType>
+
+    <!-- Reference NETStandard.Library explicitly to avoid package downgrade warnings. -->
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
   </PropertyGroup>
 
   <!-- packaging settings-->
@@ -41,7 +44,7 @@
     <ProjectReference Include="..\NugetReferenceResolver\NugetReferenceResolver.csproj" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp1.1' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
     <PackageReference Include="System.Runtime.Loader" Version="$(CoreFxVersion)" />
   </ItemGroup>
 
